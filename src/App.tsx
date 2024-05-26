@@ -3,6 +3,8 @@ import ModalButton from "./components/ModalButton"
 import styled from "styled-components";
 import Table from "./components/Table";
 
+import { FcFolder } from "react-icons/fc";
+
 
 const Button = styled.button`
     border-radius: 8px;
@@ -21,15 +23,24 @@ const Button = styled.button`
 `
 
 const Section = styled.div`
-  gap: 16px;
-  padding:16px 32px;
+  height: calc(100vh - 64px);
+  width: calc(100vw - 48px);
+  gap: 32px;
+  padding:32px 16px 32px 32px;
   display: flex;
-  flex-direction: column;
   
 `
 const Container = styled.div`
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  width: 16vw;
+  gap: 24px;
+`
+const TableArea = styled.div`
+  background-color: #3d3d3d ;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
 `
 
 function App() {
@@ -38,15 +49,19 @@ function App() {
   const toggleModal = useCallback(()=>{
     setIsModalOpen(wasModalOpen => !wasModalOpen);
   },[setIsModalOpen])
+
   return (
     <>
       <Section>
-        <h1 style={{margin:0}}>To-do</h1>
         <Container>
+          <FcFolder size='6em'/>
+          <h1 style={{margin:0 }}>Lista De Tarefas</h1>
           <Button onClick={toggleModal}>Adionar Tarefa</Button> <ModalButton isModalOpen={isModalOpen} onBackClick={toggleModal}/>
           <Button>Remover Tarefa</Button>
         </Container>
-        <Table/>
+        <TableArea>
+          <Table/>
+        </TableArea>
       </Section>
     </>
   )

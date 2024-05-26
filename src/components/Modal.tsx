@@ -15,7 +15,7 @@ const Section = styled.div`
     justify-content: center;
     background-color: rgb(0,0,0,0.35);
 `
-const Container = styled.div`
+const Container = styled.form`
     display: flex;
     flex-direction: column;
 
@@ -38,7 +38,7 @@ interface ModalProps{
 }
 
 
-function Modal( {onBackClick , children} : ModalProps ) {
+function Modal( {onBackClick , children } : ModalProps ) {
     console.log("Render Modal")
     return (
         <Section onClick={onBackClick}>
@@ -50,4 +50,4 @@ function Modal( {onBackClick , children} : ModalProps ) {
     )
 }
 
-export default memo (Modal)
+export default memo(Modal)

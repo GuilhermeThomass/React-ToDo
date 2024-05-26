@@ -47,20 +47,22 @@ function ModalButton({isModalOpen,onBackClick}:ModalButtonProps) {
         return null;
     }
     return(
-        <Modal onBackClick={onBackClick}>
+        <Modal onBackClick={onBackClick} >
             <>
                 <Tittle>Adicionar Nova Tarefa</Tittle>
                 <Input 
                     type="text"
                     placeholder="Tarefa"
+                    name="tarefa"
                     required
                 />
                 <Input 
                     type="text"
                     placeholder="Duração"
+                    name="duracao"
                     required
                 />
-                <Button>Submit</Button>
+                <Button type='submit'>Submit</Button>
                 
             </>
         </Modal>
