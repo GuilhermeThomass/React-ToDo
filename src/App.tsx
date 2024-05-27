@@ -1,10 +1,9 @@
 import { useCallback, useState } from "react"
 import ModalButton from "./components/ModalButton"
 import styled from "styled-components";
-import Table from "./components/Table";
+import Task from "./components/Task";
 
 import { FcFolder } from "react-icons/fc";
-
 
 const Button = styled.button`
     border-radius: 8px;
@@ -15,13 +14,12 @@ const Button = styled.button`
     font-family: inherit;
     background-color: #1a1a1a;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease-out;
     box-shadow: 0 5px 10px rgba(0,0,0,0.5);
     &:active{
       transform: scale(0.96);
     }
 `
-
 const Section = styled.div`
   height: calc(100vh - 64px);
   width: calc(100vw - 48px);
@@ -43,9 +41,23 @@ const TableArea = styled.div`
   border-radius: 12px;
 `
 
-function App() {
-  const [isModalOpen,setIsModalOpen] = useState(false);
+interface appProps{
+  
+}
 
+function App({}:appProps) {
+
+  const [isModalOpen,setIsModalOpen] = useState(false);
+  const [list,setList] = useState([{status:false,task:''}]);
+
+  const handleSubmit = (task : string) =>{
+    const newTask= {
+      status: false,
+      task: task
+    }
+    
+    setList((prev)=>[...prev,newTask]);
+  }
   const toggleModal = useCallback(()=>{
     setIsModalOpen(wasModalOpen => !wasModalOpen);
   },[setIsModalOpen])
@@ -56,11 +68,11 @@ function App() {
         <Container>
           <FcFolder size='6em'/>
           <h1 style={{margin:0 }}>Lista De Tarefas</h1>
-          <Button onClick={toggleModal}>Adionar Tarefa</Button> <ModalButton isModalOpen={isModalOpen} onBackClick={toggleModal}/>
-          <Button>Remover Tarefa</Button>
+          <Button onClick={toggleModal}>Adionar Tarefa</Button><ModalButton isModalOpen={isModalOpen} onBackClick={toggleModal} handleSubmit={handleSubmit}/>
+          <Button>Remover</Button>
         </Container>
         <TableArea>
-          <Table/>
+          <Task Tasks={list}/> 
         </TableArea>
       </Section>
     </>
