@@ -74,7 +74,7 @@ function Table({Tasks}:TaskProps) {
                 {Tasks.map((item,index)=>(
                     <Row key={index}>
                         <CheckboxCont>
-                            <CheckBox type="checkbox" checked={item.status}/>
+                            <CheckBox type="checkbox"/>
                         </CheckboxCont>
                         <Task>{item.task}</Task>
                     </Row>

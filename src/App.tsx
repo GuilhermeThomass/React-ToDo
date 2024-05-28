@@ -5,6 +5,7 @@ import Task from "./components/Task";
 
 import { FcFolder } from "react-icons/fc";
 
+
 const Button = styled.button`
     border-radius: 8px;
     border: 1px solid transparent;
@@ -40,15 +41,23 @@ const TableArea = styled.div`
   width: 100%;
   border-radius: 12px;
 `
+const Tittle = styled.h1`
+  margin: 0;
+`
+
 
 interface appProps{
-  
+ TaskI : Tasks
+}
+interface Tasks {
+  status: boolean,
+  task: string
 }
 
-function App({}:appProps) {
+function App({TaskI}:appProps) {
 
   const [isModalOpen,setIsModalOpen] = useState(false);
-  const [list,setList] = useState([{status:false,task:''}]);
+  const [list,setList] = useState(Array<typeof TaskI>);
 
   const handleSubmit = (task : string) =>{
     const newTask= {
@@ -67,7 +76,7 @@ function App({}:appProps) {
       <Section>
         <Container>
           <FcFolder size='6em'/>
-          <h1 style={{margin:0 }}>Lista De Tarefas</h1>
+          <Tittle>Lista De Tarefas</Tittle>
           <Button onClick={toggleModal}>Adionar Tarefa</Button><ModalButton isModalOpen={isModalOpen} onBackClick={toggleModal} handleSubmit={handleSubmit}/>
           <Button>Remover</Button>
         </Container>
