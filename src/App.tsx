@@ -8,7 +8,7 @@ import { FcFolder } from "react-icons/fc";
 
 const Button = styled.button`
     border-radius: 8px;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     padding: 0.6em 1.2em;
     font-size: 1em;
     font-weight: 500;
@@ -58,7 +58,6 @@ function App({TaskI}:appProps) {
 
   const [isModalOpen,setIsModalOpen] = useState(false);
   const [list,setList] = useState(Array<typeof TaskI>);
-
   const handleSubmit = (task : string) =>{
     const newTask= {
       status: false,
@@ -76,7 +75,7 @@ function App({TaskI}:appProps) {
       <Section>
         <Container>
           <FcFolder size='6em'/>
-          <Tittle>Lista De Tarefas</Tittle>
+          <Tittle>Lista de Tarefas</Tittle>
           <Button onClick={toggleModal}>Adionar Tarefa</Button><ModalButton isModalOpen={isModalOpen} onBackClick={toggleModal} handleSubmit={handleSubmit}/>
           <Button>Remover</Button>
         </Container>

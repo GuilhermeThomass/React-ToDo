@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { memo } from "react";
+import CheckBox from "./Checkbox";
 
 const Container = styled.div`
     display: flex;
@@ -33,25 +34,11 @@ const Row = styled.div`
     padding: 8px 0;
     &:hover{
         background-color: rgba(100,100,100,0.2);
-        cursor: pointer;
     }
 `
 const RowH = styled.div`
     display: flex;
     flex-direction: row;
-`
-const CheckboxCont = styled.div`
-    display: flex;
-    padding: 8px 59.3px;
-
-    justify-content: center;
-    align-items: center;
-    border-right: 2px solid white;
-`
-const CheckBox = styled.input`
-    &:hover{
-        cursor: pointer;
-    }
 `
 const Task = styled.h2`
     margin: 0 32px;
@@ -59,8 +46,7 @@ const Task = styled.h2`
 `
 interface TaskProps {
     Tasks:{status:boolean,task: string}[]
-}
-  
+} 
 
 function Table({Tasks}:TaskProps) {
     
@@ -73,9 +59,7 @@ function Table({Tasks}:TaskProps) {
             <TableBody>
                 {Tasks.map((item,index)=>(
                     <Row key={index}>
-                        <CheckboxCont>
-                            <CheckBox type="checkbox"/>
-                        </CheckboxCont>
+                        <CheckBox isChecked={item.status}/>
                         <Task>{item.task}</Task>
                     </Row>
                 ))}
