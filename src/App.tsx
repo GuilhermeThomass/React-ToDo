@@ -7,19 +7,19 @@ import { FcFolder } from "react-icons/fc";
 
 
 const Button = styled.button`
-    border-radius: 8px;
-    border: 2px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    cursor: pointer;
-    transition: transform 0.2s ease-out;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
-    &:active{
-      transform: scale(0.96);
-    }
+  border-radius: 8px;
+  border: 2px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+  &:active{
+    transform: scale(0.96);
+  }
 `
 const Section = styled.div`
   height: calc(100vh - 64px);
@@ -32,6 +32,7 @@ const Section = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  min-width: 15vw;
   width: 16vw;
   gap: 24px;
 `
@@ -47,11 +48,10 @@ const Tittle = styled.h1`
 
 
 interface appProps{
- TaskI : Tasks
-}
-interface Tasks {
+ TaskI : {
   status: boolean,
   task: string
+ }
 }
 
 function App({TaskI}:appProps) {
