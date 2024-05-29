@@ -55,9 +55,9 @@ interface appProps{
 }
 
 function App({TaskI}:appProps) {
-
   const [isModalOpen,setIsModalOpen] = useState(false);
   const [list,setList] = useState(Array<typeof TaskI>);
+
   const handleSubmit = (task : string) =>{
     const newTask= {
       status: false,
@@ -69,7 +69,7 @@ function App({TaskI}:appProps) {
   const toggleModal = useCallback(()=>{
     setIsModalOpen(wasModalOpen => !wasModalOpen);
   },[setIsModalOpen])
-
+  console.log(list)
   return (
     <>
       <Section>

@@ -45,7 +45,7 @@ const Task = styled.h2`
     font-weight: 600;
 `
 interface TaskProps {
-    Tasks:{status:boolean,task: string}[]
+    Tasks:{status:boolean,task: string}[],
 } 
 
 function Table({Tasks}:TaskProps) {
