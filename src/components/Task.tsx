@@ -49,7 +49,6 @@ interface TaskProps {
 } 
 
 function Table({Tasks}:TaskProps) {
-    
     return(
         <Container>
             <RowH>
@@ -59,7 +58,7 @@ function Table({Tasks}:TaskProps) {
             <TableBody>
                 {Tasks.map((item,index)=>(
                     <Row key={index}>
-                        <CheckBox isChecked={item.status}/>
+                        <CheckBox isChecked={item.status} Task={item}/>
                         <Task>{item.task}</Task>
                     </Row>
                 ))}

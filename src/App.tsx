@@ -58,18 +58,24 @@ function App({TaskI}:appProps) {
   const [isModalOpen,setIsModalOpen] = useState(false);
   const [list,setList] = useState(Array<typeof TaskI>);
 
+
+  const removeSelected = useCallback(()=>{
+    const remover = list.filter((item)=> item.status === false);
+    setList(remover);
+    // console.log("Render Remover")
+  },[setList,list])
+
   const handleSubmit = (task : string) =>{
     const newTask= {
       status: false,
       task: task
     }
-    
     setList((prev)=>[...prev,newTask]);
   }
   const toggleModal = useCallback(()=>{
+    // console.log("Render Modal")
     setIsModalOpen(wasModalOpen => !wasModalOpen);
   },[setIsModalOpen])
-  console.log(list)
   return (
     <>
       <Section>
@@ -77,7 +83,7 @@ function App({TaskI}:appProps) {
           <FcFolder size='6em'/>
           <Tittle>Lista de Tarefas</Tittle>
           <Button onClick={toggleModal}>Adionar Tarefa</Button><ModalButton isModalOpen={isModalOpen} onBackClick={toggleModal} handleSubmit={handleSubmit}/>
-          <Button>Remover</Button>
+          <Button onClick={removeSelected}>Remover</Button>
         </Container>
         <TableArea>
           <Task Tasks={list}/> 

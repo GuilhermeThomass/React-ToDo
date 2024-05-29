@@ -46,12 +46,26 @@ const StyledCheckbox = styled.label`
 
 interface CheckBoxProps{
     isChecked : boolean,
+    Task : {
+        status: boolean,
+        task: string
+    }
 }
-export default function CheckBox({isChecked}:CheckBoxProps){
+function CheckBox({isChecked, Task}:CheckBoxProps){
     const [checked, setChecked] = useState(isChecked);
-   
+    
+    function changeStatus(){
+        if(!checked){
+            Task.status = true;
+        }
+        if(checked){
+            Task.status = false;
+        }
+        console.log(Task)
+    }
     function handleCheckboxChange(){
         setChecked(!checked);
+        changeStatus();
     }
     return(
         <>
@@ -70,3 +84,5 @@ export default function CheckBox({isChecked}:CheckBoxProps){
         </>
     )
 }
+
+export default CheckBox;
